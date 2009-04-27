@@ -1,0 +1,17 @@
+{% load modulotags %}
+{% load i18n %}
+{% load dashboardtags %}
+
+{% for dashboard_item in dashboard_items %}
+{% ifmodulo dashboard_item.ordernr 3 colnumber %}
+<div class="dashboard_item" id="dashboarditem_{{dashboard_item.id}}">
+    <div class="dashboard_item_remove_div" style="display:none">
+        <a href="#" class="dashboard_item_remove">{% trans "Remove" %}</a><br/>
+        <a href="#TB_inline?width=300&amp;height=300&amp;inlineId=dashboard_item_configuration_{{dashboard_item.id}}&amp;modal=true" class="dashboard_item_configlink thickbox" id="dashboard_item_config_link_{{dashboard_item.id}}">{% trans "Config" %}</a>
+    </div>
+    <div class="dashboard_item_content">
+        {% render_dashboard dashboard_item %}
+    </div>
+</div>
+{% endifmodulo %}
+{% endfor %}

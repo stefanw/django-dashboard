@@ -1,0 +1,5 @@
+{% load i18n %}
+<div class="dashboard_item_configuration" id="dashboard_item_configuration_{{dashboard_item.id}}" style="display:none">
+    <form method="post" action="{% url pcp-dashboard-config dashboard_item.id %}" class="dashboard_item_configuration_form">
+        <p><a href="#" class="close_thickbox">{% trans "Close" %}</a></p>
+        

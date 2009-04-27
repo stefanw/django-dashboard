@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% block content_class %}big{% endblock %}
+{% block extra_css %}
+<!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/reset-fonts-grids/reset-fonts-grids.css" />-->
+{% endblock %}
+
+{% block body %}
+<h1>Dashboard Management</h1>
+<table>
+    <thead>
+        <tr>
+            <td>App</td>
+            <td>Class</td>
+            <b><td>Title</td></b>
+            <td>Description</td>
+            <td>Status</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dashboard_view in dashboard_views %}
+        <tr>
+            <td>{{dashboard_view.app}}</td>
+            <td>{{dashboard_view.view}}</td>
+            <td>{{dashboard_view.title}}</td>
+            <td>{{dashboard_view.description}}</td>
+            <td>
+                {% if dashboard_view.added %}
+                <strong>added</strong>
+                {% endif %}
+                {% if dashboard_view.synced %}
+                synced
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Es wurden {{deleted}} DashboardViews gelöscht.</p>
+
+{% endblock %}
